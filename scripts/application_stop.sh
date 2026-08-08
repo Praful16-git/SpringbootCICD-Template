@@ -2,9 +2,6 @@
 
 echo "Stopping Spring Boot application"
 
-PID=$(pgrep -f 'springboot-app.jar' || true)
+pkill -f 'springboot-cicd-demo-0.0.1-SNAPSHOT.jar' || true
 
-if [ -n "$PID" ]; then
-    kill -15 $PID
-    sleep 5
-fi
+echo "Spring Boot application stopped"
