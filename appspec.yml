@@ -3,21 +3,26 @@ os: linux
 
 files:
   - source: target/
-    destination: /home/ec2-user/app
+    destination: /opt/springboot/
 
 hooks:
+
   ApplicationStop:
     - location: scripts/application_stop.sh
       timeout: 300
+      runas: root
 
   BeforeInstall:
     - location: scripts/before_install.sh
       timeout: 300
+      runas: root
+
+  AfterInstall:
+    - location: scripts/after_install.sh
+      timeout: 300
+      runas: root
 
   ApplicationStart:
     - location: scripts/application_start.sh
       timeout: 300
-
-  ValidateService:
-    - location: scripts/validate_service.sh
-      timeout: 300
+      runas: root
