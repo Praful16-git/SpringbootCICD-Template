@@ -1,5 +1,5 @@
 #!/bin/bash
 
-echo "Creating application directory..."
+echo "Before Install started"
 
-mkdir -p /home/ec2-user/app
+mkdir -p /opt/springboot
