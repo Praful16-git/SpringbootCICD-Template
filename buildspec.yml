@@ -5,13 +5,24 @@ phases:
     runtime-versions:
       java: corretto17
 
+  pre_build:
+    commands:
+      - echo "Starting Maven build"
+      - java -version
+      - mvn -version
+
   build:
     commands:
-      - echo "Building Spring Boot application..."
-      - mvn clean package
+      - echo "Building Spring Boot application"
+      - mvn clean package -DskipTests
+
+  post_build:
+    commands:
+      - echo "Build completed"
 
 artifacts:
   files:
     - target/*.jar
     - appspec.yml
     - scripts/**/*
+  discard-paths: no
